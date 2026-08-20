@@ -1,0 +1,68 @@
+[System]
+Name='FWQI'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=16
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='pH'
+Range=[4 10]
+NumMFs=5
+MF1='VH':'trimf',[6.25 7 7.75]
+MF2='H':'trimf',[7.42063492063492 7.71063492063492 8.32063492063492]
+MF3='M':'trimf',[7.25 8.075 8.9]
+MF4='L1':'trimf',[4 5.5 7]
+MF5='L2':'trimf',[8.4 9.2 10]
+
+[Input2]
+Name='BOD'
+Range=[0 350]
+NumMFs=5
+MF1='VH':'trimf',[0 19 49.5370370370371]
+MF2='H':'trimf',[20.8 47.6851851851852 79.2]
+MF3='M':'trimf',[62.5 150 248.611111111111]
+MF4='L':'trimf',[189 241.203703703704 300]
+MF5='VL':'trimf',[263 304.166666666667 350]
+
+[Input3]
+Name='TSS'
+Range=[0 450]
+NumMFs=5
+MF1='VH':'trimf',[0 7.5 15]
+MF2='H':'trimf',[10 17.5 25]
+MF3='M':'trimf',[20 100 180]
+MF4='L':'trimf',[140 270 400]
+MF5='VL':'trimf',[400 425 450]
+
+[Output1]
+Name='WQI'
+Range=[0 100]
+NumMFs=3
+MF1='Low':'trimf',[0 20 40]
+MF2='Medium':'trimf',[35 55 75]
+MF3='High':'trimf',[70 85 100]
+
+[Rules]
+1 1 1, 1 (1) : 1
+2 2 2, 1 (1) : 1
+1 3 3, 3 (1) : 1
+2 3 3, 3 (1) : 1
+3 3 3, 3 (1) : 1
+4 5 5, 3 (1) : 1
+4 4 4, 3 (1) : 1
+3 3 2, 3 (1) : 1
+5 5 5, 3 (1) : 1
+5 4 5, 3 (1) : 1
+5 4 4, 3 (1) : 1
+2 1 1, 2 (1) : 1
+1 2 3, 3 (1) : 1
+3 2 1, 3 (1) : 1
+3 2 2, 3 (1) : 1
+2 3 3, 3 (1) : 1
